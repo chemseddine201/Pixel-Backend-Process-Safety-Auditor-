@@ -30,10 +30,14 @@ use App\Http\Controllers\WorkSector\SystemConfigurationControllers\DropdownLists
     CountriesController,
     PurchaseOrderTypeController,
     TimeSheetCategoriesController,
-    CompanyBankAccountsController
+    CompanyBankAccountsController,
+    ProcessSaftyElementController,
+    ReportNameController,
 };
 
-Route::prefix('list')->middleware(['auth:api'])->group(function () {
+Route::prefix('list')
+// ->middleware(['auth:api'])
+->group(function () {
     Route::get('payment-methods', [PaymentMethodsController::class, 'list']);
     Route::get('payment-terms', [PaymentTermsController::class, 'list']);
     Route::get('taxes-types', [TaxTypesController::class, 'list']);
@@ -60,4 +64,6 @@ Route::prefix('list')->middleware(['auth:api'])->group(function () {
     Route::get('responsible-persons', [EmployeeController::class, 'list']);
     Route::get('countries', [CountriesController::class, 'list']);
     Route::get('bank-accounts', [CompanyBankAccountsController::class, 'list']);
+    Route::get('report-names', [ReportNameController::class, 'list']);
+    Route::get('process-safty-elements', [ProcessSaftyElementController::class, 'list']);
 });

@@ -23,9 +23,9 @@ use App\Http\Controllers\WorkSector\SystemConfigurationControllers\DropdownLists
     TimeSheetSubCategoriesController,
     MeasurementUnitesController,
     ProductsCategoriesController,
-    ServiceCategoriesController
+    ServiceCategoriesController,
+    ReportNameController,
 };
-use App\Http\Controllers\WorkSector\SystemConfigurationControllers\RolesAndPermissions\RolesController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -104,4 +104,6 @@ Route::prefix('system-configs')->middleware(['auth:api'])->group(function () {
     Route::resource('offical-receipt-issuers', OfficalRecieptIssuersController::class)->parameters(["offical-receipt-issuers" => "offical-receipt-issuers"]);
     Route::resource('branches', BranchesController::class)->parameters(["branches" => "branch"]);
     Route::resource('areas', AreasController::class);
+
+    Route::resource('report-names', ReportNameController::class);
 });

@@ -39,14 +39,19 @@ class RefreshTheProject extends Command
     public function handle()
     {
         Artisan::call("migrate:fresh");
+        $this->info(Artisan::output());
         Artisan::call("db:seed");
+        $this->info(Artisan::output());
         Artisan::call("passport:install");
-
+        $this->info(Artisan::output());
+        Artisan::call("jwt:secret");
+        $this->info(Artisan::output());
         Artisan::call("storage:link");
+        $this->info(Artisan::output());
         Artisan::call("optimize:clear");
-//        Artisan::call("config:cache");
-//        Artisan::call("routes:cache");
+        $this->info(Artisan::output());
+        //        Artisan::call("config:cache");
+        //        Artisan::call("routes:cache");
         $this->info("Project Has Been Refreshed");
-
     }
 }
